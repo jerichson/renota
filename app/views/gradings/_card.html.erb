@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Teacher</dt>
       <!-- Display teacher_id start -->
-      <dd><%= grading.teacher_id %></dd>
+      <dd>
+        <% if @grading.teacher.present? %>
+          <%= link_to grading.teacher, grading.teacher %>
+        <% end %>
+      </dd>
       <!-- Display teacher_id end -->
 
       <dt>Submission</dt>
       <!-- Display submission_id start -->
-      <dd><%= grading.submission_id %></dd>
+      <dd>
+        <% if @grading.submission.present? %>
+          <%= link_to grading.submission, grading.submission %>
+        <% end %>
+      </dd>
       <!-- Display submission_id end -->
 
       <dt>Marked work</dt>

@@ -24,7 +24,11 @@
 
       <dt>Student</dt>
       <!-- Display student_id start -->
-      <dd><%= submission.student_id %></dd>
+      <dd>
+        <% if @submission.student.present? %>
+          <%= link_to submission.student, submission.student %>
+        <% end %>
+      </dd>
       <!-- Display student_id end -->
 
     </dl>
