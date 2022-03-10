@@ -5,6 +5,8 @@ class Submission < ApplicationRecord
 
   # Validations
 
+  validates :student_id, :presence => true
+
   # Scopes
 
   def to_s
