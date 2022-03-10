@@ -1,5 +1,7 @@
 class Teacher < ApplicationRecord
-  # Direct associations
+  
+  include JwtToken
+# Direct associations
 
   has_many   :gradings,
              :dependent => :destroy
