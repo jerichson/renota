@@ -9,6 +9,8 @@ class SubmissionResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :student
+
   # Indirect associations
 
 end

@@ -8,6 +8,8 @@ class StudentResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :submissions
+
   # Indirect associations
 
 end
