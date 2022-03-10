@@ -3,13 +3,9 @@
 <!-- Form grading end -->
 
   <!-- Label and input for teacher_id start -->
-  <div class="form-group">
-    <%= f.label :teacher_id %>
-
-    <!-- Input for teacher_id start -->
-    <%= f.collection_select :teacher_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for teacher_id end -->
-  </div>
+  <!-- Input for "teacher_id" start -->
+  <%= f.hidden_field :teacher_id, value: current_teacher.id %>
+  <!-- Input for "teacher_id" end -->
   <!-- Label and input for teacher_id end -->
 
   <!-- Label and input for submission_id start -->
