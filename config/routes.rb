@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :submissions
   devise_for :students
   resources :students
   devise_for :teachers

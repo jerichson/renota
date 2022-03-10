@@ -1,0 +1,109 @@
+<% was_validated = submission.errors.any? %>
+
+<%= form_with(model: submission, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for assignment_name start -->
+  <div class="form-group">
+    <% assignment_name_class = "form-control" %>
+    <% assignment_name_was_invalid = submission.errors.include?(:assignment_name) %>
+
+    <% if was_validated %>
+      <% if assignment_name_was_invalid %>
+        <% assignment_name_class << " is-invalid" %>
+      <% else %>
+        <% assignment_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :assignment_name %>
+    <!-- Input for assignment_name start -->
+    <%= f.text_field :assignment_name, class: assignment_name_class, placeholder: "Enter assignment name" %>
+    <!-- Input for assignment_name end -->
+    <% if assignment_name_was_invalid %>
+      <% submission.errors.full_messages_for(:assignment_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for assignment_name end -->
+  <!-- Label and input for question_number start -->
+  <div class="form-group">
+    <% question_number_class = "form-control" %>
+    <% question_number_was_invalid = submission.errors.include?(:question_number) %>
+
+    <% if was_validated %>
+      <% if question_number_was_invalid %>
+        <% question_number_class << " is-invalid" %>
+      <% else %>
+        <% question_number_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :question_number %>
+    <!-- Input for question_number start -->
+    <%= f.number_field :question_number, class: question_number_class, placeholder: "Enter question number" %>
+    <!-- Input for question_number end -->
+    <% if question_number_was_invalid %>
+      <% submission.errors.full_messages_for(:question_number).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for question_number end -->
+  <!-- Label and input for solution start -->
+  <div class="form-group">
+    <% solution_class = "form-control" %>
+    <% solution_was_invalid = submission.errors.include?(:solution) %>
+
+    <% if was_validated %>
+      <% if solution_was_invalid %>
+        <% solution_class << " is-invalid" %>
+      <% else %>
+        <% solution_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :solution %>
+    <!-- Input for solution start -->
+    <%= f.text_field :solution, class: solution_class, placeholder: "Enter solution" %>
+    <!-- Input for solution end -->
+    <% if solution_was_invalid %>
+      <% submission.errors.full_messages_for(:solution).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for solution end -->
+  <!-- Label and input for student_id start -->
+  <div class="form-group">
+    <% student_class = "form-control" %>
+    <% student_was_invalid = submission.errors.include?(:student) %>
+
+    <% if was_validated %>
+      <% if student_was_invalid %>
+        <% student_class << " is-invalid" %>
+      <% else %>
+        <% student_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :student_id %>
+    <!-- Input for student_id start -->
+    <%= f.number_field :student_id, class: student_class, placeholder: "Enter student" %>
+    <!-- Input for student_id end -->
+    <% if student_was_invalid %>
+      <% submission.errors.full_messages_for(:student).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for student_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

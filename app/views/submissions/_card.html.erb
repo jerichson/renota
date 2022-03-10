@@ -1,0 +1,56 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Submission #<%= submission.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Assignment name</dt>
+      <!-- Display assignment_name start -->
+      <dd><%= submission.assignment_name %></dd>
+      <!-- Display assignment_name end -->
+
+      <dt>Question number</dt>
+      <!-- Display question_number start -->
+      <dd><%= submission.question_number %></dd>
+      <!-- Display question_number end -->
+
+      <dt>Solution</dt>
+      <!-- Display solution start -->
+      <dd><%= submission.solution %></dd>
+      <!-- Display solution end -->
+
+      <dt>Student</dt>
+      <!-- Display student_id start -->
+      <dd><%= submission.student_id %></dd>
+      <!-- Display student_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back submission, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link submission start -->
+      <div class="col">
+        <%= link_to edit_submission_url(submission), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link submission end -->
+
+      <!-- Delete link submission start -->
+      <div class="col">
+        <%= link_to submission, method: :delete, data: { confirm: "Do you really want to delete this submission?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link submission end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(submission.updated_at) %> ago
+  </div>
+</div>
