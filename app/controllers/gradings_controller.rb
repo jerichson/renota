@@ -24,7 +24,12 @@ class GradingsController < ApplicationController
     @grading = Grading.new(grading_params)
 
     if @grading.save
-      redirect_to @grading, notice: 'Grading was successfully created.'
+      message = 'Grading was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @grading, notice: message
+      end
     else
       render :new
     end

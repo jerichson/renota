@@ -8,6 +8,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1
   def show
+    @grading = Grading.new
   end
 
   # GET /teachers/new

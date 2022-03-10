@@ -1,0 +1,42 @@
+<!-- Form submission start -->
+<%= form_with(model: @submission, local: true) do |f| %>
+<!-- Form submission end -->
+
+  <!-- Label and input for assignment_name start -->
+  <div class="form-group">
+    <%= f.label :assignment_name %>
+
+    <!-- Input for assignment_name start -->
+    <%= f.text_field :assignment_name, class: "form-control" %>
+    <!-- Input for assignment_name end -->
+  </div>
+  <!-- Label and input for assignment_name end -->
+
+  <!-- Label and input for question_number start -->
+  <div class="form-group">
+    <%= f.label :question_number %>
+
+    <!-- Input for question_number start -->
+    <%= f.text_field :question_number, class: "form-control" %>
+    <!-- Input for question_number end -->
+  </div>
+  <!-- Label and input for question_number end -->
+
+  <!-- Label and input for solution start -->
+  <div class="form-group">
+    <%= f.label :solution %>
+
+    <!-- Input for solution start -->
+    <%= f.text_field :solution, class: "form-control" %>
+    <!-- Input for solution end -->
+  </div>
+  <!-- Label and input for solution end -->
+
+  <!-- Label and input for student_id start -->
+  <!-- Input for student_id start -->
+  <%= f.hidden_field :student_id, value: @student.id %>
+  <!-- Input for student_id end -->
+  <!-- Label and input for student_id end -->
+
+  <%= f.submit "Create submission", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
