@@ -42,8 +42,14 @@ class SubmissionsController < ApplicationController
   # DELETE /submissions/1
   def destroy
     @submission.destroy
-    redirect_to submissions_url, notice: 'Submission was successfully destroyed.'
+    message = "Submission was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to submissions_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
