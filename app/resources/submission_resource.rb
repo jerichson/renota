@@ -9,6 +9,8 @@ class SubmissionResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :gradings
+
   belongs_to :student
 
   # Indirect associations
