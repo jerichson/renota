@@ -5,6 +5,8 @@ class Grading < ApplicationRecord
 
   # Validations
 
+  validates :teacher_id, :presence => true
+
   # Scopes
 
   def to_s
