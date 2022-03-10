@@ -4,6 +4,8 @@ RSpec.describe Submission, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:student) }
+
     end
 
     describe "InDirect Associations" do
