@@ -1,27 +1,22 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: %i[show edit update destroy]
 
-  # GET /submissions
   def index
     @q = Submission.ransack(params[:q])
     @submissions = @q.result(distinct: true).includes(:student,
                                                       :gradings).page(params[:page]).per(10)
   end
 
-  # GET /submissions/1
   def show
     @grading = Grading.new
   end
 
-  # GET /submissions/new
   def new
     @submission = Submission.new
   end
 
-  # GET /submissions/1/edit
   def edit; end
 
-  # POST /submissions
   def create
     @submission = Submission.new(submission_params)
 
@@ -37,7 +32,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /submissions/1
   def update
     if @submission.update(submission_params)
       redirect_to @submission, notice: "Submission was successfully updated."
@@ -46,7 +40,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
   def destroy
     @submission.destroy
     message = "Submission was successfully deleted."
@@ -59,12 +52,10 @@ class SubmissionsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_submission
     @submission = Submission.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def submission_params
     params.require(:submission).permit(:assignment_name, :question_number,
                                        :solution, :student_id)

@@ -4,25 +4,20 @@ class GradingsController < ApplicationController
 
   before_action :set_grading, only: %i[show edit update destroy]
 
-  # GET /gradings
   def index
     @q = Grading.ransack(params[:q])
     @gradings = @q.result(distinct: true).includes(:teacher, :submission,
                                                    :student).page(params[:page]).per(10)
   end
 
-  # GET /gradings/1
   def show; end
 
-  # GET /gradings/new
   def new
     @grading = Grading.new
   end
 
-  # GET /gradings/1/edit
   def edit; end
 
-  # POST /gradings
   def create
     @grading = Grading.new(grading_params)
 
@@ -38,7 +33,6 @@ class GradingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /gradings/1
   def update
     if @grading.update(grading_params)
       redirect_to @grading, notice: "Grading was successfully updated."
@@ -47,7 +41,6 @@ class GradingsController < ApplicationController
     end
   end
 
-  # DELETE /gradings/1
   def destroy
     @grading.destroy
     message = "Grading was successfully deleted."
@@ -68,12 +61,10 @@ class GradingsController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_grading
     @grading = Grading.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def grading_params
     params.require(:grading).permit(:teacher_id, :submission_id,
                                     :marked_work, :grade, :feedback)
