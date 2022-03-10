@@ -17,7 +17,9 @@
 
       <dt>Marked work</dt>
       <!-- Display marked_work start -->
-      <dd><%= grading.marked_work %></dd>
+      <dd>
+        <%= cl_image_tag @grading.marked_work, class: "img-fluid" %>
+      </dd>
       <!-- Display marked_work end -->
 
       <dt>Grade</dt>

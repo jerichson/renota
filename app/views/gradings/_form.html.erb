@@ -68,7 +68,7 @@
 
     <%= f.label :marked_work %>
     <!-- Input for marked_work start -->
-    <%= f.text_field :marked_work, class: marked_work_class, placeholder: "Enter marked work" %>
+    <%= f.file_field :marked_work, class: "form-control" %>
     <!-- Input for marked_work end -->
     <% if marked_work_was_invalid %>
       <% grading.errors.full_messages_for(:marked_work).each do |message| %>

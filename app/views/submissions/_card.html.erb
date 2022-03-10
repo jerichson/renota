@@ -17,7 +17,9 @@
 
       <dt>Solution</dt>
       <!-- Display solution start -->
-      <dd><%= submission.solution %></dd>
+      <dd>
+        <%= cl_image_tag @submission.solution, class: "img-fluid" %>
+      </dd>
       <!-- Display solution end -->
 
       <dt>Student</dt>

@@ -1,4 +1,6 @@
 class Grading < ApplicationRecord
+  mount_base64_uploader :marked_work, MarkedWorkUploader
+
   # Direct associations
 
   belongs_to :submission

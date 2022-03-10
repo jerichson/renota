@@ -1,4 +1,6 @@
 class Submission < ApplicationRecord
+  mount_base64_uploader :solution, SolutionUploader
+
   # Direct associations
 
   has_many   :gradings,

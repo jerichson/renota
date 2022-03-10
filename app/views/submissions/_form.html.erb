@@ -68,7 +68,7 @@
 
     <%= f.label :solution %>
     <!-- Input for solution start -->
-    <%= f.text_field :solution, class: solution_class, placeholder: "Enter solution" %>
+    <%= f.file_field :solution, class: "form-control" %>
     <!-- Input for solution end -->
     <% if solution_was_invalid %>
       <% submission.errors.full_messages_for(:solution).each do |message| %>
