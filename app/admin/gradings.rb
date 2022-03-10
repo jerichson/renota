@@ -1,5 +1,7 @@
 ActiveAdmin.register Grading do
 
+ permit_params :teacher_id, :submission_id, :marked_work, :grade, :feedback
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
