@@ -12,4 +12,12 @@ class StudentResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :gradings do
+    assign_each do |student, gradings|
+      gradings.select do |g|
+        g.id.in?(student.gradings.map(&:id))
+      end
+    end
+  end
+
 end

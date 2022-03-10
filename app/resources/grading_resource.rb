@@ -16,4 +16,11 @@ class GradingResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :student
+
+  filter :student_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:student).where(:submissions => {:student_id => value})
+    end
+  end
 end
