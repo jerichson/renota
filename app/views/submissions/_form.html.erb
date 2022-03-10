@@ -1,7 +1,6 @@
 <% was_validated = submission.errors.any? %>
 
 <%= form_with(model: submission, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for assignment_name start -->
   <div class="form-group">
     <% assignment_name_class = "form-control" %>
     <% assignment_name_was_invalid = submission.errors.include?(:assignment_name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :assignment_name %>
-    <!-- Input for assignment_name start -->
     <%= f.text_field :assignment_name, class: assignment_name_class, placeholder: "Enter assignment name" %>
-    <!-- Input for assignment_name end -->
     <% if assignment_name_was_invalid %>
       <% submission.errors.full_messages_for(:assignment_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for assignment_name end -->
-  <!-- Label and input for question_number start -->
   <div class="form-group">
     <% question_number_class = "form-control" %>
     <% question_number_was_invalid = submission.errors.include?(:question_number) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :question_number %>
-    <!-- Input for question_number start -->
     <%= f.number_field :question_number, class: question_number_class, placeholder: "Enter question number" %>
-    <!-- Input for question_number end -->
     <% if question_number_was_invalid %>
       <% submission.errors.full_messages_for(:question_number).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for question_number end -->
-  <!-- Label and input for solution start -->
   <div class="form-group">
     <% solution_class = "form-control" %>
     <% solution_was_invalid = submission.errors.include?(:solution) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :solution %>
-    <!-- Input for solution start -->
     <%= f.file_field :solution, class: "form-control" %>
-    <!-- Input for solution end -->
     <% if solution_was_invalid %>
       <% submission.errors.full_messages_for(:solution).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for solution end -->
-  <!-- Label and input for student_id start -->
   <div class="form-group">
     <% student_class = "form-control" %>
     <% student_was_invalid = submission.errors.include?(:student) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :student_id %>
-    <!-- Input for student_id start -->
     <%= f.collection_select :student_id, Student.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for student_id end -->
     <% if student_was_invalid %>
       <% submission.errors.full_messages_for(:student).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,6 +89,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for student_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

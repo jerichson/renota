@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @submission.gradings.each do |grading| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to grading, grading %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_teacher == grading.teacher %>
           <%= link_to grading, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="submission_gradings_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "submissions/submission_gradings_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

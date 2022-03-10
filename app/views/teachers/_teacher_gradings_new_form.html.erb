@@ -1,51 +1,29 @@
-<!-- Form grading start -->
 <%= form_with(model: @grading, local: true) do |f| %>
-<!-- Form grading end -->
 
-  <!-- Label and input for teacher_id start -->
-  <!-- Input for teacher_id start -->
   <%= f.hidden_field :teacher_id, value: @teacher.id %>
-  <!-- Input for teacher_id end -->
-  <!-- Label and input for teacher_id end -->
 
-  <!-- Label and input for submission_id start -->
   <div class="form-group">
     <%= f.label :submission_id %>
 
-    <!-- Input for submission_id start -->
     <%= f.collection_select :submission_id, Submission.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for submission_id end -->
   </div>
-  <!-- Label and input for submission_id end -->
 
-  <!-- Label and input for marked_work start -->
   <div class="form-group">
     <%= f.label :marked_work %>
 
-    <!-- Input for marked_work start -->
     <%= f.file_field :marked_work, class: "form-control" %>
-    <!-- Input for marked_work end -->
   </div>
-  <!-- Label and input for marked_work end -->
 
-  <!-- Label and input for grade start -->
   <div class="form-group">
     <%= f.label :grade %>
 
-    <!-- Input for grade start -->
     <%= f.text_field :grade, class: "form-control" %>
-    <!-- Input for grade end -->
   </div>
-  <!-- Label and input for grade end -->
 
-  <!-- Label and input for feedback start -->
   <div class="form-group">
     <%= f.label :feedback %>
-    <!-- Input for feedback start -->
     <%= f.text_area :feedback, rows: "3", class: "form-control" %>
-    <!-- Input for feedback end -->
   </div>
-  <!-- Label and input for feedback end -->
 
   <%= f.submit "Create grading", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

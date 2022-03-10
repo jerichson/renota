@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @student.gradings.each do |grading| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/gradings/<%= grading.id %>">
           <%= grading %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>
