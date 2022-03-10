@@ -1,0 +1,61 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Grading #<%= grading.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Teacher</dt>
+      <!-- Display teacher_id start -->
+      <dd><%= grading.teacher_id %></dd>
+      <!-- Display teacher_id end -->
+
+      <dt>Submission</dt>
+      <!-- Display submission_id start -->
+      <dd><%= grading.submission_id %></dd>
+      <!-- Display submission_id end -->
+
+      <dt>Marked work</dt>
+      <!-- Display marked_work start -->
+      <dd><%= grading.marked_work %></dd>
+      <!-- Display marked_work end -->
+
+      <dt>Grade</dt>
+      <!-- Display grade start -->
+      <dd><%= grading.grade %></dd>
+      <!-- Display grade end -->
+
+      <dt>Feedback</dt>
+      <!-- Display feedback start -->
+      <dd><%= grading.feedback %></dd>
+      <!-- Display feedback end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back grading, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link grading start -->
+      <div class="col">
+        <%= link_to edit_grading_url(grading), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link grading end -->
+
+      <!-- Delete link grading start -->
+      <div class="col">
+        <%= link_to grading, method: :delete, data: { confirm: "Do you really want to delete this grading?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link grading end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(grading.updated_at) %> ago
+  </div>
+</div>

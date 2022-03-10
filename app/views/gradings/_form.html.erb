@@ -1,0 +1,135 @@
+<% was_validated = grading.errors.any? %>
+
+<%= form_with(model: grading, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for teacher_id start -->
+  <div class="form-group">
+    <% teacher_class = "form-control" %>
+    <% teacher_was_invalid = grading.errors.include?(:teacher) %>
+
+    <% if was_validated %>
+      <% if teacher_was_invalid %>
+        <% teacher_class << " is-invalid" %>
+      <% else %>
+        <% teacher_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :teacher_id %>
+    <!-- Input for teacher_id start -->
+    <%= f.number_field :teacher_id, class: teacher_class, placeholder: "Enter teacher" %>
+    <!-- Input for teacher_id end -->
+    <% if teacher_was_invalid %>
+      <% grading.errors.full_messages_for(:teacher).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for teacher_id end -->
+  <!-- Label and input for submission_id start -->
+  <div class="form-group">
+    <% submission_class = "form-control" %>
+    <% submission_was_invalid = grading.errors.include?(:submission) %>
+
+    <% if was_validated %>
+      <% if submission_was_invalid %>
+        <% submission_class << " is-invalid" %>
+      <% else %>
+        <% submission_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :submission_id %>
+    <!-- Input for submission_id start -->
+    <%= f.number_field :submission_id, class: submission_class, placeholder: "Enter submission" %>
+    <!-- Input for submission_id end -->
+    <% if submission_was_invalid %>
+      <% grading.errors.full_messages_for(:submission).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for submission_id end -->
+  <!-- Label and input for marked_work start -->
+  <div class="form-group">
+    <% marked_work_class = "form-control" %>
+    <% marked_work_was_invalid = grading.errors.include?(:marked_work) %>
+
+    <% if was_validated %>
+      <% if marked_work_was_invalid %>
+        <% marked_work_class << " is-invalid" %>
+      <% else %>
+        <% marked_work_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :marked_work %>
+    <!-- Input for marked_work start -->
+    <%= f.text_field :marked_work, class: marked_work_class, placeholder: "Enter marked work" %>
+    <!-- Input for marked_work end -->
+    <% if marked_work_was_invalid %>
+      <% grading.errors.full_messages_for(:marked_work).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for marked_work end -->
+  <!-- Label and input for grade start -->
+  <div class="form-group">
+    <% grade_class = "form-control" %>
+    <% grade_was_invalid = grading.errors.include?(:grade) %>
+
+    <% if was_validated %>
+      <% if grade_was_invalid %>
+        <% grade_class << " is-invalid" %>
+      <% else %>
+        <% grade_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :grade %>
+    <!-- Input for grade start -->
+    <%= f.text_field :grade, class: grade_class, placeholder: "Enter grade" %>
+    <!-- Input for grade end -->
+    <% if grade_was_invalid %>
+      <% grading.errors.full_messages_for(:grade).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for grade end -->
+  <!-- Label and input for feedback start -->
+  <div class="form-group">
+    <% feedback_class = "form-control" %>
+    <% feedback_was_invalid = grading.errors.include?(:feedback) %>
+
+    <% if was_validated %>
+      <% if feedback_was_invalid %>
+        <% feedback_class << " is-invalid" %>
+      <% else %>
+        <% feedback_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :feedback %>
+    <!-- Input for feedback start -->
+    <%= f.text_area :feedback, class: feedback_class, placeholder: "Enter feedback" %>
+    <!-- Input for feedback end -->
+    <% if feedback_was_invalid %>
+      <% grading.errors.full_messages_for(:feedback).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for feedback end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
