@@ -10,6 +10,8 @@ RSpec.describe Student, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:gradings) }
+
     end
 
     describe "Validations" do

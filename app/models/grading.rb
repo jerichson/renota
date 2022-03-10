@@ -7,6 +7,10 @@ class Grading < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :student,
+             :through => :submission,
+             :source => :student
+
   # Validations
 
   validates :grade, :presence => true

@@ -6,6 +6,10 @@ class Student < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :gradings,
+             :through => :submissions,
+             :source => :gradings
+
   # Validations
 
   validates :name, :presence => true

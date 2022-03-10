@@ -12,6 +12,8 @@ RSpec.describe Grading, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:student) }
+
     end
 
     describe "Validations" do
