@@ -12,6 +12,8 @@ RSpec.describe Grading, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:grade) }
+
     it { should validate_presence_of(:marked_work) }
 
     it { should validate_presence_of(:submission_id) }

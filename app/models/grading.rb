@@ -5,6 +5,8 @@ class Grading < ApplicationRecord
 
   # Validations
 
+  validates :grade, :presence => true
+
   validates :marked_work, :presence => true
 
   validates :submission_id, :presence => true
