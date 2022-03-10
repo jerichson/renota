@@ -10,6 +10,8 @@ class GradingResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :teacher
+
   # Indirect associations
 
 end
