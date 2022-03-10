@@ -41,16 +41,20 @@
 
       <!-- Edit link grading start -->
       <div class="col">
-        <%= link_to edit_grading_url(grading), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_teacher == @grading.teacher %>
+          <%= link_to edit_grading_url(grading), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link grading end -->
 
       <!-- Delete link grading start -->
       <div class="col">
-        <%= link_to grading, method: :delete, data: { confirm: "Do you really want to delete this grading?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_teacher == @grading.teacher %>
+          <%= link_to grading, method: :delete, data: { confirm: "Do you really want to delete this grading?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link grading end -->

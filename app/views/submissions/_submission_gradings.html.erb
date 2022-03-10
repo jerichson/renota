@@ -15,8 +15,10 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <%= link_to grading, method: :delete, data: { confirm: "Do you really want to delete this grading" } do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_teacher == grading.teacher %>
+          <%= link_to grading, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
         <!-- Delete link end -->
 

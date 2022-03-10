@@ -1,4 +1,6 @@
 class GradingsController < ApplicationController
+  before_action :current_teacher_must_be_grading_teacher, only: [:edit, :update, :destroy] 
+
   before_action :set_grading, only: [:show, :edit, :update, :destroy]
 
   # GET /gradings
@@ -57,6 +59,14 @@ class GradingsController < ApplicationController
 
 
   private
+
+  def current_teacher_must_be_grading_teacher
+    set_grading
+    unless current_teacher == @grading.teacher
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_grading
       @grading = Grading.find(params[:id])
