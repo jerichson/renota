@@ -1,6 +1,8 @@
 class Grading < ApplicationRecord
   # Direct associations
 
+  belongs_to :submission
+
   belongs_to :teacher
 
   # Indirect associations

@@ -1,6 +1,9 @@
 class Submission < ApplicationRecord
   # Direct associations
 
+  has_many   :gradings,
+             :dependent => :destroy
+
   belongs_to :student
 
   # Indirect associations
