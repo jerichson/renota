@@ -13,7 +13,7 @@
     <%= f.label :submission_id %>
 
     <!-- Input for submission_id start -->
-    <%= f.text_field :submission_id, class: "form-control" %>
+    <%= f.collection_select :submission_id, Submission.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for submission_id end -->
   </div>
   <!-- Label and input for submission_id end -->

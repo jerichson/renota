@@ -42,7 +42,7 @@
 
     <%= f.label :submission_id %>
     <!-- Input for submission_id start -->
-    <%= f.number_field :submission_id, class: submission_class, placeholder: "Enter submission" %>
+    <%= f.collection_select :submission_id, Submission.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for submission_id end -->
     <% if submission_was_invalid %>
       <% grading.errors.full_messages_for(:submission).each do |message| %>
