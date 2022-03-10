@@ -5,6 +5,8 @@ class Submission < ApplicationRecord
 
   # Validations
 
+  validates :assignment_name, :presence => true
+
   validates :question_number, :presence => true
 
   validates :solution, :presence => true

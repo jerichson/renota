@@ -12,6 +12,8 @@ RSpec.describe Submission, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:assignment_name) }
+
     it { should validate_presence_of(:question_number) }
 
     it { should validate_presence_of(:solution) }
