@@ -5,7 +5,7 @@ class GradingsController < ApplicationController
 
   # GET /gradings
   def index
-    @gradings = Grading.all
+    @gradings = Grading.page(params[:page]).per(10)
   end
 
   # GET /gradings/1

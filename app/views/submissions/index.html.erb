@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @submissions, partial: "list_item", as: :submission %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @submissions, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

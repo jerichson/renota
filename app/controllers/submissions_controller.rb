@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions
   def index
-    @submissions = Submission.all
+    @submissions = Submission.page(params[:page]).per(10)
   end
 
   # GET /submissions/1
