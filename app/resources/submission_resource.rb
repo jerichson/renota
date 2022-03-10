@@ -14,5 +14,4 @@ class SubmissionResource < ApplicationResource
   belongs_to :student
 
   # Indirect associations
-
 end

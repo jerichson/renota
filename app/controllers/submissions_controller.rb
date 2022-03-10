@@ -1,10 +1,11 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: %i[show edit update destroy]
 
   # GET /submissions
   def index
     @q = Submission.ransack(params[:q])
-    @submissions = @q.result(:distinct => true).includes(:student, :gradings).page(params[:page]).per(10)
+    @submissions = @q.result(distinct: true).includes(:student,
+                                                      :gradings).page(params[:page]).per(10)
   end
 
   # GET /submissions/1
@@ -18,17 +19,16 @@ class SubmissionsController < ApplicationController
   end
 
   # GET /submissions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)
 
     if @submission.save
-      message = 'Submission was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Submission was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @submission, notice: message
       end
@@ -40,7 +40,7 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1
   def update
     if @submission.update(submission_params)
-      redirect_to @submission, notice: 'Submission was successfully updated.'
+      redirect_to @submission, notice: "Submission was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,23 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission.destroy
     message = "Submission was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to submissions_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_submission
-      @submission = Submission.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def submission_params
-      params.require(:submission).permit(:assignment_name, :question_number, :solution, :student_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_submission
+    @submission = Submission.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def submission_params
+    params.require(:submission).permit(:assignment_name, :question_number,
+                                       :solution, :student_id)
+  end
 end

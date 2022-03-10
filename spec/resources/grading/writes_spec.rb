@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe GradingResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'gradings',
-          attributes: { }
-        }
+          type: "gradings",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe GradingResource, type: :resource do
       GradingResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { Grading.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { Grading.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:grading) { create(:grading) }
 
     let(:payload) do
       {
         data: {
           id: grading.id.to_s,
-          type: 'gradings',
-          attributes: { } # Todo!
-        }
+          type: "gradings",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe GradingResource, type: :resource do
       GradingResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { grading.reload.updated_at }
+      end.to change { grading.reload.updated_at }
       # .and change { grading.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:grading) { create(:grading) }
 
     let(:instance) do
       GradingResource.find(id: grading.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { Grading.count }.by(-1)
+      end.to change { Grading.count }.by(-1)
     end
   end
 end

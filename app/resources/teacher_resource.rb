@@ -8,8 +8,7 @@ class TeacherResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :gradings
+  has_many :gradings
 
   # Indirect associations
-
 end

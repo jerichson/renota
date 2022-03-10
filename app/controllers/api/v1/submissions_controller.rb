@@ -13,7 +13,7 @@ class Api::V1::SubmissionsController < Api::V1::GraphitiController
     submission = SubmissionResource.build(params)
 
     if submission.save
-      render jsonapi: submission, status: 201
+      render jsonapi: submission, status: :created
     else
       render jsonapi_errors: submission
     end
@@ -33,7 +33,7 @@ class Api::V1::SubmissionsController < Api::V1::GraphitiController
     submission = SubmissionResource.find(params)
 
     if submission.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: submission
     end

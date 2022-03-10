@@ -8,7 +8,7 @@ class StudentResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :submissions
+  has_many :submissions
 
   # Indirect associations
 
@@ -19,5 +19,4 @@ class StudentResource < ApplicationResource
       end
     end
   end
-
 end

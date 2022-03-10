@@ -2,17 +2,17 @@ class Student < ApplicationRecord
   # Direct associations
 
   has_many   :submissions,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :gradings,
-             :through => :submissions,
-             :source => :gradings
+             through: :submissions,
+             source: :gradings
 
   # Validations
 
-  validates :name, :presence => true
+  validates :name, presence: true
 
   # Scopes
 

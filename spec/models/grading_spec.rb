@@ -1,23 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Grading, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should belong_to(:submission) }
 
     it { should belong_to(:teacher) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_one(:student) }
+  end
 
-    end
-
-    describe "Validations" do
-
+  describe "Validations" do
     it { should validate_presence_of(:grade) }
 
     it { should validate_presence_of(:marked_work) }
@@ -25,6 +19,5 @@ RSpec.describe Grading, type: :model do
     it { should validate_presence_of(:submission_id) }
 
     it { should validate_presence_of(:teacher_id) }
-
-    end
+  end
 end

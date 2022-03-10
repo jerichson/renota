@@ -13,7 +13,7 @@ class Api::V1::GradingsController < Api::V1::GraphitiController
     grading = GradingResource.build(params)
 
     if grading.save
-      render jsonapi: grading, status: 201
+      render jsonapi: grading, status: :created
     else
       render jsonapi_errors: grading
     end
@@ -33,7 +33,7 @@ class Api::V1::GradingsController < Api::V1::GraphitiController
     grading = GradingResource.find(params)
 
     if grading.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: grading
     end
