@@ -7,7 +7,7 @@
     <%= f.label :teacher_id %>
 
     <!-- Input for teacher_id start -->
-    <%= f.text_field :teacher_id, class: "form-control" %>
+    <%= f.collection_select :teacher_id, Teacher.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for teacher_id end -->
   </div>
   <!-- Label and input for teacher_id end -->
