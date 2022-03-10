@@ -5,7 +5,8 @@ class GradingsController < ApplicationController
 
   # GET /gradings
   def index
-    @gradings = Grading.page(params[:page]).per(10)
+    @q = Grading.ransack(params[:q])
+    @gradings = @q.result(:distinct => true).includes(:teacher, :submission, :student).page(params[:page]).per(10)
   end
 
   # GET /gradings/1

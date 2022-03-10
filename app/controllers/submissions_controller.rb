@@ -3,7 +3,8 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions
   def index
-    @submissions = Submission.page(params[:page]).per(10)
+    @q = Submission.ransack(params[:q])
+    @submissions = @q.result(:distinct => true).includes(:student, :gradings).page(params[:page]).per(10)
   end
 
   # GET /submissions/1
