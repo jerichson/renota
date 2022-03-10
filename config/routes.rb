@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "submissions#index"
   resources :gradings
   resources :submissions
   devise_for :students
